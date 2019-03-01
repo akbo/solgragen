@@ -4,7 +4,7 @@ conda_env: conda.yml
 
 entry_points:
     main:
-        command: "rm -f human_solver.log; python solgragen/main.py"
+        command: "rm -f human_solver.log; python solgragen/test.py"
     compile:
         command: "python setup.py build_ext --inplace"
     clean:

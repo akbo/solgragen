@@ -1,5 +1,5 @@
 from solgragen.human_solver import logger
-from solgragen.human_solver.utils cimport set_cell
+from solgragen.human_solver.utils cimport row, col, block, block_idx, set_cell
 
 
 cdef int unique(char[9][9][10] grid):

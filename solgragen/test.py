@@ -11,16 +11,18 @@ with open("data/sudoku17.txt") as f:
 # with open("data/simple_example.txt") as f:
 #     grid = f.readlines()[4].strip()
 
+
 grid = parse_grid(grid)
+
 print(format_grid(grid))
 print(is_valid_grid(grid))
 
-# start = time()
-# valid_full_grids = backtrack(grid)
-# print(f"backtrack took {time() - start} seconds")
+start = time()
+valid_full_grids = backtrack(grid)
+print(f"backtrack took {time() - start} seconds")
 
-# for valid_full_grid in valid_full_grids:
-#     print(format_grid(valid_full_grid))
+for valid_full_grid in valid_full_grids:
+    print(format_grid(valid_full_grid))
 
 start = time()
 human_solution = solve(grid)

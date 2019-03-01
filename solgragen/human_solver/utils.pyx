@@ -55,7 +55,7 @@ cdef int grid_full(char[9][9][10] grid):
     return full
 
 
-cdef values_only(char[9][9][10] grid, char[9][9] values_only_grid):
+cdef void values_only(char[9][9][10] grid, char[9][9] values_only_grid):
     for r in range(9):
         for c in range(9):
             values_only_grid[r][c] = grid[r][c][0]

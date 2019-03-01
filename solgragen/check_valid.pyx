@@ -10,11 +10,11 @@ cdef inline int numbers_unique(char[9] values):
             return 0
     return 1
 
-def is_valid_grid(char[:,:] grid):
+def is_valid_grid(python_grid):
     cdef char cgrid[9][9]
     for r in range(9):
         for c in range(9):
-            cgrid[r][c] = grid[r, c]
+            cgrid[r][c] = python_grid[r][c]
     
     retval = cis_valid_grid(cgrid)
     if retval:

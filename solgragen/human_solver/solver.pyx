@@ -1,6 +1,3 @@
-import numpy as np
-
-
 from solgragen.human_solver import logger
 
 
@@ -15,16 +12,17 @@ from solgragen.backtrack cimport cbacktrack
 from solgragen.draw_grid cimport draw
 
 
-def solve(char[:,:] ngrid):
+def solve(python_grid):
+    python_grid = python_grid[:]
+
     cdef char grid[9][9][10]
     cdef char values_only_grid[9][9]
-    cdef char[:,:] ngrid_view    
 
     # copy grid and initialize candidates
     for r in range(9):
         for c in range(9):
-            grid[r][c][0] = ngrid[r, c]
-            if ngrid[r, c]:
+            grid[r][c][0] = python_grid[r][c]
+            if python_grid[r][c]:
                 for i in range(1,10):
                     grid[r][c][i] = 0
             else:
@@ -40,12 +38,13 @@ def solve(char[:,:] ngrid):
 
         if grid_full(grid):
             # grid full, return a numpy grid
-            ngrid = np.zeros([9,9], dtype=np.int8)
-            ngrid_view = ngrid
+            python_grid = []
             for r in range(9):
+                python_row = []
                 for c in range(9):
-                    ngrid_view[r, c] = grid[r][c][0]
-            return ngrid
+                    python_row.append(grid[r][c][0])
+                python_grid.append(python_row)
+            return python_grid
 
         # Level 0 Strategies
         grid_changed = naked_single(grid)

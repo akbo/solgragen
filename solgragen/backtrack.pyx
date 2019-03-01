@@ -2,11 +2,11 @@ import numpy as np
 from solgragen.check_valid cimport cis_valid_grid
 
 
-def backtrack(char[:,:] grid):
+def backtrack(python_grid):
     cdef char cgrid[9][9]
     for r in range(9):
         for c in range(9):
-            cgrid[r][c] = grid[r, c]
+            cgrid[r][c] = python_grid[r][c]
     return cbacktrack(cgrid)
 
 

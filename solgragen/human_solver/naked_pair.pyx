@@ -1,4 +1,5 @@
 from solgragen.human_solver import logger
+from solgragen.human_solver.utils cimport row, col, block, block_idx
 
 cdef int naked_pair(char[9][9][10] grid):
     '''
