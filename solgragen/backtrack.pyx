@@ -1,4 +1,3 @@
-import numpy as np
 from solgragen.check_valid cimport cis_valid_grid
 
 
@@ -12,7 +11,6 @@ def backtrack(python_grid):
 
 cdef cbacktrack(char[9][9] igrid):
     cdef int zr, zc
-    cdef char[:,:] ngrid_view
 
     zero_found = False
     for zero_r in range(9):
@@ -24,13 +22,14 @@ cdef cbacktrack(char[9][9] igrid):
                     zero_found = True
 
     if not zero_found:
-        # grid full, return a numpy grid
-        ngrid = np.zeros([9,9], dtype=np.int8)
-        ngrid_view = ngrid
+        # grid full, return a python grid
+        python_grid = []
         for r in range(9):
+            python_row = []
             for c in range(9):
-                ngrid_view[r, c] = igrid[r][c]
-        return [ngrid]
+                python_row.append(igrid[r][c])
+            python_grid.append(python_row)
+        return [python_grid]
 
     # make copy of input grid so we don't write on the caller's grid
     cdef char grid[9][9]
