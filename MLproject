@@ -1,0 +1,15 @@
+name: Sudoku Solver Grader
+
+conda_env: conda.yml
+
+entry_points:
+    main:
+        command: "rm -f human_solver.log; python solgragen/main.py"
+    compile:
+        command: "python setup.py build_ext --inplace"
+    clean:
+        command: "rm -f */*.c */*.so */*.html human_solver.log; rm -rf __pycache__ build .pytest_cache solgragen.egg-info"
+    test:
+        command: "python -m pytest"
+    develop:
+        command: "pip install -e ."

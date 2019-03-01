@@ -1,0 +1,1 @@
+cdef void draw(char[9][9][10])

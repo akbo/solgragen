@@ -1,0 +1,1 @@
+cdef int cis_valid_grid(char[9][9])
