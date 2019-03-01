@@ -1,15 +1,3 @@
-cdef inline int numbers_unique(char[9] values):
-    cdef char nonzero_counts[10]
-    nonzero_counts[:] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-    for i in range(9):
-        nonzero_counts[values[i]] += 1
-    
-    for i in range(1,10):
-        if nonzero_counts[i] > 1:
-            return 0
-    return 1
-
 def is_valid_grid(python_grid):
     cdef char cgrid[9][9]
     for r in range(9):
@@ -21,6 +9,7 @@ def is_valid_grid(python_grid):
         return True
     else:
         return False
+    
     
 cdef inline int cis_valid_grid(char[9][9] grid):
 
@@ -53,4 +42,17 @@ cdef inline int cis_valid_grid(char[9][9] grid):
         if not numbers_unique(area):
             return 0
 
+    return 1
+
+
+cdef inline int numbers_unique(char[9] values):
+    cdef char nonzero_counts[10]
+    nonzero_counts[:] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+    for i in range(9):
+        nonzero_counts[values[i]] += 1
+    
+    for i in range(1,10):
+        if nonzero_counts[i] > 1:
+            return 0
     return 1
