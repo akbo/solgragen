@@ -7,7 +7,34 @@ extensions = [
     Extension("solgragen.check_valid", ["solgragen/check_valid.pyx"], include_dirs=[]),
     Extension("solgragen.draw_grid", ["solgragen/draw_grid.pyx"], include_dirs=[]),
     Extension(
-        "solgragen.human_solver", ["solgragen/human_solver.pyx"], include_dirs=[]
+        "solgragen.human_solver.solver",
+        ["solgragen/human_solver/solver.pyx"],
+        include_dirs=[],
+    ),
+    Extension(
+        "solgragen.human_solver.cleanup",
+        ["solgragen/human_solver/cleanup.pyx"],
+        include_dirs=[],
+    ),
+    Extension(
+        "solgragen.human_solver.utils",
+        ["solgragen/human_solver/utils.pyx"],
+        include_dirs=[],
+    ),
+    Extension(
+        "solgragen.human_solver.naked_single",
+        ["solgragen/human_solver/naked_single.pyx"],
+        include_dirs=[],
+    ),
+    Extension(
+        "solgragen.human_solver.unique",
+        ["solgragen/human_solver/unique.pyx"],
+        include_dirs=[],
+    ),
+    Extension(
+        "solgragen.human_solver.naked_pair",
+        ["solgragen/human_solver/naked_pair.pyx"],
+        include_dirs=[],
     ),
     Extension("solgragen.utils", ["solgragen/utils.pyx"], include_dirs=[]),
 ]

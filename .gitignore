@@ -7,3 +7,4 @@ build/
 sudoku17.txt
 *.log
 scratch.py
+solgragen.egg-info/

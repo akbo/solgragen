@@ -8,7 +8,7 @@ entry_points:
     compile:
         command: "python setup.py build_ext --inplace"
     clean:
-        command: "rm -f */*.c */*.so */*.html human_solver.log; rm -rf __pycache__ build .pytest_cache solgragen.egg-info"
+        command: "rm -f */*.c */*.so */*.html */*/*.c */*/*.so */*/*.html human_solver.log; rm -rf */__pycache__ */*/__pycache__ build .pytest_cache solgragen.egg-info"
     test:
         command: "python -m pytest"
     develop:
