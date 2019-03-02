@@ -1,11 +1,13 @@
+'''
+If a candidate is only present in a single cell of a row, a column or a block, it must be the solution of the cell
+'''
+
+
 from solgragen.human_solver import logger
 from solgragen.human_solver.utils cimport row, col, block, block_idx, set_cell
 
 
 cdef int unique(char[9][9][10] grid):
-    '''
-    If a candidate is only present in a single cell of a row, a column or a block, it must be the solution of the cell
-    '''
     global row, col, block
 
     cdef char area_idxs[9][2]

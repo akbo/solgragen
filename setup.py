@@ -37,6 +37,11 @@ extensions = [
         include_dirs=[],
     ),
     Extension("solgragen.utils", ["solgragen/utils.pyx"], include_dirs=[]),
+    Extension(
+        "tests.human_solver.unique_test",
+        ["tests/human_solver/unique_test.pyx"],
+        include_dirs=[],
+    ),
 ]
 
 setup(
@@ -49,7 +54,8 @@ setup(
     license="MIT",
     packages=find_packages(),
     ext_modules=cythonize(
-        extensions, compiler_directives={"language_level": 3}, annotate=True
+        extensions,
+        compiler_directives={"language_level": 3, "embedsignature": True},
+        annotate=True,
     ),
 )
-
