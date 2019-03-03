@@ -1,9 +1,9 @@
-from solgragen.human_solver.unique cimport unique
+from solgragen.human_solver.naked_single cimport naked_single
 from solgragen.human_solver.utils cimport init_grid
 from solgragen.utils import parse_grid
 
 
-def test_unique():
+def test_naked_single():
     cdef char grid[9][9][10]
     init_grid(
         parse_grid(
@@ -12,6 +12,6 @@ def test_unique():
         grid,
     )
 
-    unique(grid)
+    naked_single(grid)
 
-    assert grid[6][8][0] == 1
+    assert grid[6][3][0] == 7
