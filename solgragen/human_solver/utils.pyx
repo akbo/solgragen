@@ -1,5 +1,5 @@
 from solgragen.check_valid cimport cis_valid_grid
-from solgragen.human_solver.cleanup cimport cleanup_cell
+from solgragen.human_solver.cleanup cimport cleanup, cleanup_cell
 from solgragen.human_solver import logger
 
 cdef void row(int r, char[9][2] output):
@@ -59,3 +59,16 @@ cdef void values_only(char[9][9][10] grid, char[9][9] values_only_grid):
     for r in range(9):
         for c in range(9):
             values_only_grid[r][c] = grid[r][c][0]
+
+cdef void init_grid(object pgrid, char[9][9][10] grid):
+    # copy grid and initialize candidates
+    for r in range(9):
+        for c in range(9):
+            grid[r][c][0] = pgrid[r][c]
+            if grid[r][c][0]:
+                for i in range(1, 10):
+                    grid[r][c][i] = 0
+            else:
+                for i in range(1, 10):
+                    grid[r][c][i] = 1
+    cleanup(grid)
