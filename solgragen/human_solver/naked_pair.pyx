@@ -1,6 +1,7 @@
 from solgragen.human_solver import logger
 from solgragen.human_solver.utils cimport row, col, block, block_idx
 
+
 cdef int naked_pair(char[9][9][10] grid):
     '''
     If there are two candidates that are only valid for two cells in an area, those two candidates must fill the two cells. Thus, the two candidates can be removed from all other cells of the area.
@@ -67,7 +68,6 @@ cdef int naked_pair_area(char[9][9][10] grid, char[9][2] area_idxs, int candidat
     # if two fitting cells found, eliminate candidates in other cells
     if n_fitting_cells == 2:
         # logger.info(f"found naked pair - candidates: {candidate1}, {candidate2}; cells: ({fitting_cell_idxs[0][0]}, {fitting_cell_idxs[0][1]}), ({fitting_cell_idxs[1][0]}, {fitting_cell_idxs[1][1]})")
-        # draw(grid)
         for cell_idx in range(9):
             r = area_idxs[cell_idx][0]
             c = area_idxs[cell_idx][1]
@@ -76,13 +76,13 @@ cdef int naked_pair_area(char[9][9][10] grid, char[9][2] area_idxs, int candidat
                 not ((r == fitting_cell_idxs[1][0]) and (c == fitting_cell_idxs[1][1]))
             ):
                 if grid[r][c][candidate1]:
+                    logger.info(f"naked pair: eliminating candidate {candidate1} in cell [{r}, {c}]")
                     grid[r][c][candidate1] = 0
-                    logger.info(f"naked pair: eliminated candidate {candidate1} in cell [{r}, {c}]")
                     grid_changed = 1
 
                 if grid[r][c][candidate2]:
+                    logger.info(f"naked pair: eliminating candidate {candidate2} in cell [{r}, {c}]")
                     grid[r][c][candidate2] = 0
-                    logger.info(f"naked pair: eliminated candidate {candidate2} in cell [{r}, {c}]")
                     grid_changed = 1
     
     return grid_changed

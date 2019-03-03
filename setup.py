@@ -47,6 +47,11 @@ extensions = [
         ["tests/human_solver/naked_single_test.pyx"],
         include_dirs=[],
     ),
+    Extension(
+        "tests.human_solver.naked_pair_test",
+        ["tests/human_solver/naked_pair_test.pyx"],
+        include_dirs=[],
+    ),
 ]
 
 setup(
