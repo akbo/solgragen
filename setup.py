@@ -52,6 +52,16 @@ extensions = [
         ["tests/human_solver/naked_pair_test.pyx"],
         include_dirs=[],
     ),
+    Extension(
+        "solgragen.human_solver.hidden_pair",
+        ["solgragen/human_solver/hidden_pair.pyx"],
+        include_dirs=[],
+    ),
+    Extension(
+        "tests.human_solver.hidden_pair_test",
+        ["tests/human_solver/hidden_pair_test.pyx"],
+        include_dirs=[],
+    ),
 ]
 
 setup(

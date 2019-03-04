@@ -3,7 +3,7 @@ from solgragen.human_solver.utils cimport init_grid
 from solgragen.utils import parse_grid
 
 
-def test_pair_single():
+def test_naked_pair():
     cdef char grid[9][9][10]
     init_grid(
         parse_grid(

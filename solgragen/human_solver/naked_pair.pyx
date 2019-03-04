@@ -1,11 +1,13 @@
+'''
+If there are two candidates that are only valid for two cells in an area, those two candidates must fill the two cells. Thus, the two candidates can be removed from all other cells of the area.
+'''
+
+
 from solgragen.human_solver import logger
 from solgragen.human_solver.utils cimport row, col, block, block_idx
 
 
 cdef int naked_pair(char[9][9][10] grid):
-    '''
-    If there are two candidates that are only valid for two cells in an area, those two candidates must fill the two cells. Thus, the two candidates can be removed from all other cells of the area.
-    '''
     global row, col, block
 
     cdef char area_idxs[9][2]

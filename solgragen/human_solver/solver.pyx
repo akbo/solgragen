@@ -6,6 +6,7 @@ from solgragen.human_solver.utils cimport grid_full, values_only, init_grid
 from solgragen.human_solver.naked_single cimport naked_single
 from solgragen.human_solver.unique cimport unique
 from solgragen.human_solver.naked_pair cimport naked_pair
+from solgragen.human_solver.hidden_pair cimport hidden_pair
 
 
 from solgragen.backtrack cimport cbacktrack
@@ -25,7 +26,7 @@ def solve(python_grid):
     while True:
 
         if grid_full(grid):
-            # grid full, return a numpy grid
+            # grid full, return a python grid
             python_grid = []
             for r in range(9):
                 python_row = []
@@ -45,6 +46,10 @@ def solve(python_grid):
 
         # Level 1 Strategies
         grid_changed = naked_pair(grid)
+        if grid_changed:
+            continue
+
+        grid_changed = hidden_pair(grid)
         if grid_changed:
             continue
 
