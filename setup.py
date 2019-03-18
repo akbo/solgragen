@@ -62,6 +62,16 @@ extensions = [
         ["tests/human_solver/hidden_pair_test.pyx"],
         include_dirs=[],
     ),
+    Extension(
+        "solgragen.human_solver.boxline",
+        ["solgragen/human_solver/boxline.pyx"],
+        include_dirs=[],
+    ),
+    Extension(
+        "tests.human_solver.boxline_test",
+        ["tests/human_solver/boxline_test.pyx"],
+        include_dirs=[],
+    ),
 ]
 
 setup(

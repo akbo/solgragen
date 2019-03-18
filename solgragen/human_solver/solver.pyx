@@ -7,6 +7,7 @@ from solgragen.human_solver.naked_single cimport naked_single
 from solgragen.human_solver.unique cimport unique
 from solgragen.human_solver.naked_pair cimport naked_pair
 from solgragen.human_solver.hidden_pair cimport hidden_pair
+from solgragen.human_solver.boxline cimport boxline
 
 
 from solgragen.backtrack cimport cbacktrack
@@ -50,6 +51,10 @@ def solve(python_grid):
             continue
 
         grid_changed = hidden_pair(grid)
+        if grid_changed:
+            continue
+
+        grid_changed = boxline(grid)
         if grid_changed:
             continue
 
